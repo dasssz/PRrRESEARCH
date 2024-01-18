@@ -33,6 +33,7 @@
             <h1>Sender</h1>
             <p>Balance: ₱<span id="budget1">500000</span></p>
             <button onclick="sendMoney()">Send ₱105</button>
+            <button onclick="resetBalance()">Reset Balance</button>
         </div>
     </div>
 
@@ -50,6 +51,12 @@
             } else {
                 alert("Insufficient balance.");
             }
+
+            function resetBalance() {
+            var budget1 = 500000;
+            localStorage.setItem('senderBalance', budget1);
+            document.querySelector('#budget1').textContent = budget1;
+            alert("Balance reset to ₱500000.");
         }
 
         function openNewWindow() {
