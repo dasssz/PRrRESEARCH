@@ -7,7 +7,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: rgb(29, 80, 97); 
+            background-image: url('bulacan.jpg'); 
             background-size: cover;
             background-position: center;
         }
@@ -20,7 +20,7 @@
         }
 
         .website {
-            background-color: #bbb7b7;
+            background-color: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -32,7 +32,7 @@
         <div class="website" id="first-website">
             <h1>Sender</h1>
             <p>Balance: ₱<span id="budget1">500000</span></p>
-            <button onclick="sendMoney()">Send ₱105</button>
+            <button onclick="sendMoney()">Send ₱5</button>
             <button onclick="resetBalance()">Reset Balance</button>
         </div>
     </div>
@@ -42,30 +42,21 @@
         function sendMoney() {
             var budget1 = parseInt(localStorage.getItem('senderBalance')) || 500000;
 
-            if (budget1 >= 105) {
-                budget1 -= 105;
+            if (budget1 >= 5) {
+                budget1 -= 5;
                 localStorage.setItem('senderBalance', budget1);
                 document.querySelector('#budget1').textContent = budget1;
                 alert("Money sent successfully!");
-                openNewWindow(); 
             } else {
                 alert("Insufficient balance.");
             }
+        }
 
-            function resetBalance() {
+        function resetBalance() {
             var budget1 = 500000;
             localStorage.setItem('senderBalance', budget1);
             document.querySelector('#budget1').textContent = budget1;
             alert("Balance reset to ₱500000.");
-        }
-
-        function openNewWindow() {
-            var newWindow = window.open('receipt.html', '_blank'); 
-            if (newWindow) {
-                newWindow.focus(); 
-            } else {
-                alert('Popup blocked! Please allow popups for this website.'); 
-            }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
